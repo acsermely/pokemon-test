@@ -6,10 +6,9 @@
 </script>
 
 <div class="flex flex-col w-full items-center p-5 my-5 border-2 rounded-2xl max-w-[400px]"
-	class:border-amber-400={ranking == 0}
-	class:border-white={ranking == 1}
-	class:border-amber-800={ranking == 2}
-	class:border-neutral-content={ranking > 2}
+	class:border-amber-400={ranking == 0 && pokemon.vote_count > 0}
+	class:border-white={ranking == 1 && pokemon.vote_count > 0}
+	class:border-amber-800={ranking == 2 && pokemon.vote_count > 0}
 >
 	<img class="max-w-[200px]" src={pokemon.img} alt={`${pokemon.name}_img`}>
 	<div class="text-2xl p-2">{capFirstL(pokemon.name)}</div>
