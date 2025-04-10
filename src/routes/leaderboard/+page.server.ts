@@ -8,5 +8,5 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 	if (!items) error(404);
 	
 	
-	return { pokemons: items };
+	return { leaders: items };
 };
