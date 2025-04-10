@@ -147,6 +147,25 @@ app.get('/votes', async (req, res) => {
 	} catch (err) {
 	  res.status(500).json({ error: err.message });
 	}
+});
+
+app.post('/reset', async (req, res) => {
+	try {
+	  const db = await open({
+		filename: './pokemon.db',
+		driver: sqlite3.Database
+	  });
+
+	  await db.run('UPDATE votes SET vote_count = 0');
+	  await db.close();
+	  
+	  res.json({ 
+		success: true,
+		message: 'All votes have been reset to 0'
+	  });
+	} catch (err) {
+	  res.status(500).json({ error: err.message });
+	}
   });
 
 try {
