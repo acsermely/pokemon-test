@@ -1,7 +1,10 @@
 <script lang="ts">
 	import '../app.css';
+	import { setGameState } from '../lib/state/game.svelte';
 
 	let { children } = $props();
+
+	setGameState();
 </script>
 
 <div class="flex flex-col-reverse sm:flex-col w-full min-h-[100dvh]">

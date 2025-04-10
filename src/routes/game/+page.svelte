@@ -1,16 +1,31 @@
 <script lang="ts">
+	import { onMount } from "svelte";
 	import PokemonCard from "../../lib/components/PokemonCard.svelte";
-	import type { PokemonData } from "../../lib/models/Pokemon";
+	import { getGameState } from "../../lib/state/game.svelte";
+	import { fade } from "svelte/transition";
 
-	let { data }: {data: {pokemons: Array<PokemonData>}} = $props();
+	let gameState = getGameState();
+
+	onMount(() => {
+		if (!gameState.opponents.length && !gameState.isLoading) {
+			gameState.refresh()
+		}
+	})
+
+	function submit(id: number): Promise<void> {
+		return gameState.vote(id);
+	}
+
 </script>
 
-<form  method="POST" class="flex flex-col w-full sm:flex-row items-center justify-center">
-	{#if data.pokemons.length > 1}
-		<PokemonCard details={data.pokemons[0]} />
+<div class="flex flex-col w-full sm:flex-row items-center justify-center">
+	{#if !gameState.isLoading && gameState.opponents.length > 1}
+		<PokemonCard details={gameState.opponents[0]} {submit} />
 		<div class="sm:p-5 font-bold sm:text-2xl text-center">OR</div>
-		<PokemonCard details={data.pokemons[1]} />
+		<PokemonCard details={gameState.opponents[1]} {submit}/>
 	{:else}
-		Missing data
+		<div in:fade class="skeleton w-11/12 sm:w-[40vw] h-[40vh] m-5"></div>
+		<div in:fade class="skeleton w-10 h-5"></div>
+		<div in:fade class="skeleton w-11/12 sm:w-[40vw] h-[40vh] m-5"></div>
 	{/if}
-</form>
+</div>
