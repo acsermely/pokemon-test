@@ -1,11 +1,17 @@
 <script lang="ts">
-	let { data } = $props();
+	import LeaderboardCard from "../../lib/components/LeaderboardCard.svelte";
+	import type { LeaderData } from "../../lib/models/Pokemon";
 
-	console.log(data)
+	let { data }: {data: {leaders: Array<LeaderData>}} = $props();
+	console.log(data);
 </script>
-<div class="flex flex-col sm:flex-row items-center justify-center">
+
+<div class="flex flex-col flex-1 p-5 w-full items-center">
 	{#if data.leaders.length}
-		 asdasd
+		<h1 class="text-3xl w-full text-center">Top 10 Pokemons</h1>
+		{#each data.leaders as pokemon, i}
+			<LeaderboardCard {pokemon} ranking={i}/>
+		{/each}
 	{:else}
 		 No votes yet!
 	{/if}
