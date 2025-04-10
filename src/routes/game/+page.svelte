@@ -2,10 +2,7 @@
 	import PokemonCard from "../../lib/components/PokemonCard.svelte";
 	import type { PokemonData } from "../../lib/models/Pokemon";
 
-
 	let { data }: {data: {pokemons: Array<PokemonData>}} = $props();
-
-	console.log(data.pokemons)
 </script>
 <div class="flex flex-col sm:flex-row items-center justify-center">
 	{#if data.pokemons.length > 1}
