@@ -16,6 +16,23 @@ Some technical details about the project:
 | Server | Express |
 | DB     | SQLite  |
 
+#### DB
+##### pokemon table
+| Name | Type |
+| ------ | --------|
+| id        | int (PK)    |
+| name      | text        |
+| img       | text (url)  |
+| height    | int         |
+| abilities | text (list) |
+
+##### votes table
+| Name | Type |
+| ------ | --------|
+| pokemon_id | int (PK,FK) |
+| vote_count | int (def 0) |
+
+
 ### Frontend
 |||
 | --------- | ----------|
