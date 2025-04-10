@@ -5,7 +5,12 @@ This repo contains a webapp where users can pick their favouite pokemons.
 ## Run
 To start both the backend and frontned run the following script:
 ``` sh
-npn run all
+cd poke-server
+npm i
+cd ..
+npm i
+
+npm run all
 ```
 
 ## Details
