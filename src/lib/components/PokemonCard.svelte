@@ -16,7 +16,7 @@
 </script>
 
 <button class="flex flex-col w-full sm:max-h-full max-w-[400px] max-h-[40dvh] py-5 rounded-2xl hover:bg-base-content/30 transition p-3 cursor-pointer" onclick={submitVote}>
-	<img class="flex-1 h-full w-full max-h-[300px] min-h-[300px] min-w-full" src={details.img} alt={details.name + "_img"}>
+	<img class="h-full w-full max-h-[400px] min-h-[150px]" src={details.img} alt={details.name + "_img"}>
 	<div class="p-3"><span class="text-2xl font-bold">{capFirstL(details.name)}</span>, {details.height}</div>
 	<div class="flex flex-wrap justify-center">
 		{#each details.abilities.split(",") as item}
