@@ -14,7 +14,7 @@
 		.finally(()=> clicked = false)
 	}}
 >
-	<img class="h-full w-full max-h-[250px] min-h-[200px] min-w-[200px]" src={details.img} alt={details.name + "_img"}>
+	<img class="h-full w-full max-h-[250px] min-h-[150px] min-w-[200px]" src={details.img} alt={details.name + "_img"}>
 	<div class="p-3"><span class="text-2xl font-bold">{capFirstL(details.name)}</span>, {details.height}</div>
 	<div class="flex flex-wrap justify-center">
 		{#each details.abilities.split(",") as item}
