@@ -1,4 +1,4 @@
-import { error } from "@sveltejs/kit";
+import { error, fail } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
@@ -10,3 +10,16 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 	
 	return { leaders: items };
 };
+
+export const actions = {
+	default: async () => {
+		const response = await fetch(`http://localhost:3000/reset`, {
+			method: 'POST',
+			signal: AbortSignal.timeout(2000)
+		});
+	
+		if (response.status != 200) fail(response.status)
+  
+	  return { status: 'success' };
+	}
+  };

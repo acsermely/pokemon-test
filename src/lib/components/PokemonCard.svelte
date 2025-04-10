@@ -3,20 +3,10 @@
 	import { capFirstL } from "../utils/format.utils";
 
 	const {details}: {details: PokemonData} = $props();
-
-	function submitVote(): void {
-		fetch('/vote', {
-			method: 'POST',
-			body: JSON.stringify({ id: details.id }),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		}).then(()=> location.reload());
-	}
 </script>
 
-<button class="flex flex-col w-full sm:max-h-full max-w-[400px] max-h-[40dvh] py-5 rounded-2xl hover:bg-base-content/30 transition p-3 cursor-pointer" onclick={submitVote}>
-	<img class="h-full w-full max-h-[400px] min-h-[150px]" src={details.img} alt={details.name + "_img"}>
+<button name="action" value={details.id} class="flex flex-col w-full sm:max-h-full max-w-[400px] max-h-[40dvh] py-5 rounded-2xl hover:bg-base-content/30 transition p-3 cursor-pointer">
+	<img class="h-full w-full max-h-[250px] min-h-[150px]" src={details.img} alt={details.name + "_img"}>
 	<div class="p-3"><span class="text-2xl font-bold">{capFirstL(details.name)}</span>, {details.height}</div>
 	<div class="flex flex-wrap justify-center">
 		{#each details.abilities.split(",") as item}
