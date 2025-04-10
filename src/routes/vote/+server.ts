@@ -7,7 +7,8 @@ export async function POST({ request }) {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
-		}
+		},
+		signal: AbortSignal.timeout(2000)
 	});
 
 	if (response.status != 200) error(response.status)
