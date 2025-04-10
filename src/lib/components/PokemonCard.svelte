@@ -3,10 +3,13 @@
 	import { capFirstL } from "../utils/format.utils";
 
 	const {details}: {details: PokemonData} = $props();
+	let clicked = $state(false)
 </script>
 
-<button name="action" value={details.id} class="flex flex-col w-full sm:max-h-full max-w-[400px] max-h-[40dvh] py-5 rounded-2xl hover:bg-base-content/30 transition p-3 cursor-pointer">
-	<img class="h-full w-full max-h-[250px] min-h-[150px]" src={details.img} alt={details.name + "_img"}>
+<button name="action" value={details.id} class="flex flex-col w-full sm:max-h-full max-w-[400px] max-h-[40dvh] py-5 rounded-2xl hover:bg-base-content/30 transition p-3 cursor-pointer"
+	class:animate-ping={clicked} onclick={()=> clicked = true}
+>
+	<img class="h-full w-full max-h-[250px] min-h-[200px] min-w-[200px]" src={details.img} alt={details.name + "_img"}>
 	<div class="p-3"><span class="text-2xl font-bold">{capFirstL(details.name)}</span>, {details.height}</div>
 	<div class="flex flex-wrap justify-center">
 		{#each details.abilities.split(",") as item}

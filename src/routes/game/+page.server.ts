@@ -7,8 +7,6 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 	const items: Array<PokemonData> = await res.json();
 
 	if (!items) error(404);
-	
-	
 	return { pokemons: items };
 };
 

@@ -12,7 +12,7 @@
 			<a class="btn btn-link text-neutral-content" href="/leaderboard">Leaderboard</a>
 		</div>
 	</nav>
-	<div class="mb-10 sm:mt-14 w-full max-h-full flex flex-col sm:flex-row content-stretch flex-1 justify-center overflow-auto">
+	<div class="mb-10 sm:mt-14 sm:mb-0 w-full flex flex-col sm:flex-row flex-1 justify-center overflow-auto">
 		{@render children()}
 	</div>
 </div>
