@@ -18,7 +18,7 @@
 
 </script>
 
-<div class="flex flex-col w-full sm:flex-row items-center justify-center">
+<div class="flex flex-col w-full sm:flex-row items-center justify-evenly sm:justify-center">
 	{#if !gameState.isLoading && gameState.opponents.length > 1}
 		<PokemonCard details={gameState.opponents[0]} {submit} />
 		<div class="sm:p-5 font-bold sm:text-2xl text-center">OR</div>
